@@ -1,0 +1,12 @@
+.authentication__link {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: normal;
+    color: white;
+    text-decoration: none;
+    margin: 15px auto 0;
+}
+
+.authentication__link:hover {
+    opacity: 0.85;
+}

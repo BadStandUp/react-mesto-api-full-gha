@@ -1,0 +1,15 @@
+.element__image {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  background-color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  filter: brightness(100%);
+  transition: .2s ease-in-out;
+}
+
+.element__image:hover {
+  filter: brightness(70%);
+  cursor: zoom-in;
+}
