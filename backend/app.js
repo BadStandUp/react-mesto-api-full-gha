@@ -1,15 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose').default;
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const cors = require('cors');
 const { errors } = require('celebrate');
+const router = require('./routes/router');
 const limiter = require('./middleware/limiter.middleware');
 const { requestLogger, errorLogger } = require('./middleware/reqlog.middleware');
-const cors = require('cors');
-
-require('dotenv').config();
-
-const router = require('./routes/router');
 const { errorHandler } = require('./middleware/errors.middleware');
 
 const PORT = process.env.PORT || 3000;
@@ -29,7 +27,7 @@ mongoose.connect(MONGODB_URI, {
 const whitelist = [
   'https://my-mesto.nomoredomains.rocks/',
   'http://my-mesto.nomoredomains.rocks/',
-  'http://localhost:3000'
+  'http://localhost:3000',
 ];
 const corsOptions = {
   origin(origin, callback) {
