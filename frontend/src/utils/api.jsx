@@ -9,7 +9,7 @@ export default class Api {
     _fetch(url, method, body) {
         return fetch(`${this._url}${url}`, {
             method,
-            headers: this._headers,
+            headers: {...this._headers, authorization: `Bearer ${localStorage.getItem('jwt')}`},
             body
         })
             .then(res => {

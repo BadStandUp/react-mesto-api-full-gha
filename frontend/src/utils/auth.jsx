@@ -11,9 +11,10 @@ export const register = (email, password) => {
     return fetch(`${BASE_URL}/signup`, {
         method: `POST`,
         headers: {
+            "Accept": "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({password, email}),
+        body: JSON.stringify({ password, email }),
     }).then((res) => getResponse(res));
 };
 
@@ -24,7 +25,14 @@ export const authentication = (email, password) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({password, email}),
-    }).then((res) => getResponse(res));
+    })
+        .then((res) => getResponse(res))
+        .then((data) => {
+            if (data.token) {
+                localStorage.setItem('jwt', data.token);
+                return data;
+            }
+        });
 };
 
 export const getContent = (token) => {
@@ -34,5 +42,7 @@ export const getContent = (token) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-    }).then((res) => getResponse(res));
+    })
+        .then((res) => getResponse(res))
+        .then((data) => data);
 };
