@@ -4,12 +4,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/BadStandUp/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 84.201.133.88
 
-Frontend https://...
+Frontend https://my-mesto.nomoredomains.rocks
 
-Backend https://...
+Backend https://backend-mesto.nomoredomains.rocks

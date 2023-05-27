@@ -1,4 +1,4 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+const BASE_URL = 'https://backend-mesto.nomoredomains.rocks';
 
 function getResponse(res) {
     if (!res.ok) {
@@ -26,7 +26,6 @@ export const authentication = (email, password) => {
         body: JSON.stringify({password, email}),
     }).then((res) => getResponse(res));
 };
-
 
 export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {

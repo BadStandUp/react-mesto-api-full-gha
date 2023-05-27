@@ -99,7 +99,7 @@ function App() {
                 setCards(newCards);
             })
             .catch((err) => console.log(err))
-    }, [cards, currentUser])
+    }, [cards, currentUser]);
 
     const handleCardDelete = useCallback((card) => {
         setIsLoading(true);
@@ -114,7 +114,7 @@ function App() {
             .finally(() => {
                 setIsLoading(false);
             })
-    }, [cards, closeAllPopups])
+    }, [cards, closeAllPopups]);
 
     const handleUpdateUser = useCallback((data) => {
         setIsLoading(true)
@@ -129,7 +129,7 @@ function App() {
             .finally(() => {
                 setIsLoading(false);
             })
-    }, [closeAllPopups])
+    }, [closeAllPopups]);
 
     const handleUpdateAvatar = useCallback((data) => {
         setIsLoading(true);
@@ -144,7 +144,7 @@ function App() {
             .finally(() => {
                 setIsLoading(false);
             })
-    }, [closeAllPopups])
+    }, [closeAllPopups]);
 
     const handleAddPlaceSubmit = useCallback((data) => {
         setIsLoading(true);
@@ -159,7 +159,7 @@ function App() {
             .finally(() => {
                 setIsLoading(false);
             })
-    }, [cards, closeAllPopups])
+    }, [cards, closeAllPopups]);
 
     useEffect(() => {
         const token = localStorage.getItem('jwt');
@@ -204,7 +204,7 @@ function App() {
                 setImage(confirm);
             })
             .then(() => {
-                navigate('/sign-in', {replace: true});
+                navigate('/signin', {replace: true});
             })
             .catch((err) => {
                 console.log(err);
@@ -254,8 +254,8 @@ function App() {
                                 />
                             } path='/' exact/>
                         </Route>
-                        <Route path='/sign-up' element={<Register handleRegisterSubmit={handleRegisterSubmit}/>}/>
-                        <Route path='/sign-in' element={<Login handleLoginSubmit={handleLoginSubmit}/>}/>
+                        <Route path='/signup' element={<Register handleRegisterSubmit={handleRegisterSubmit}/>}/>
+                        <Route path='/signin' element={<Login handleLoginSubmit={handleLoginSubmit}/>}/>
                     </Routes>
 
                     <Footer/>

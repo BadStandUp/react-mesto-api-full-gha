@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const limiter = require('./middleware/limiter.middleware');
 const { requestLogger, errorLogger } = require('./middleware/reqlog.middleware');
+const cors = require('./middleware/cors.middleware');
 
 require('dotenv').config();
 
@@ -26,13 +27,18 @@ mongoose.connect(MONGODB_URI, {
   });
 
 const app = express();
-
+app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors);
 
-app.use(requestLogger);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use('/', router);
 

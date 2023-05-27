@@ -27,10 +27,10 @@ function Register({handleRegisterSubmit}) {
                            maxLength="30" value={email || ''} onChange={handleEmailChange} required/>
                     <input className='authentication__input' id='password' type="password" placeholder='Пароль'
                            minLength="2"
-                           maxLength="30" value={password || ''} onChange={() => handlePasswordChange} required/>
+                           maxLength="30" value={password || ''} onChange={handlePasswordChange} required/>
                     <button className='authentication__button' type='submit'>Зарегистрироваться</button>
                 </form>
-                <Link className='authentication__link' to='/sign-in'>Уже зарегистрированы? Войти</Link>
+                <Link className='authentication__link' to='/signin'>Уже зарегистрированы? Войти</Link>
             </div>
         </main>
 

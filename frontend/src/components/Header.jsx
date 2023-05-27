@@ -8,7 +8,7 @@ function Header(props) {
 
     const handleLogout = useCallback(() => {
         localStorage.removeItem('jwt');
-        navigate('/sign-in', {replace: true});
+        navigate('/signin', {replace: true});
         props.setloggedIn(false);
     }, [props, navigate])
 
@@ -22,9 +22,9 @@ function Header(props) {
                 <NavLink className={({isActive}) => `header__link ${isActive ? "header__link_active" : "header__link_hidden"}`}
                     to='/' onClick={() => handleLogout()}>Выйти</NavLink>
                 {!props.loggedIn && <NavLink className={({isActive}) => `header__link ${isActive ? "header__link_hidden" : ""}`}
-                          to='/sign-in'>Войти</NavLink>}
+                          to='/signin'>Войти</NavLink>}
                 {!props.loggedIn && <NavLink className={({isActive}) => `header__link ${isActive ? "header__link_hidden" : ""}`}
-                          to='/sign-up'>Зарегистрироваться</NavLink>}
+                          to='/signup'>Зарегистрироваться</NavLink>}
 
             </div>
         </header>
