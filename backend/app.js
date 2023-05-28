@@ -24,29 +24,21 @@ mongoose.connect(MONGODB_URI, {
     console.log(err);
   });
 
-const whitelist = [
-  'https://my-mesto.nomoredomains.rocks/',
-  'http://my-mesto.nomoredomains.rocks/',
-  'http://localhost:3000',
-];
-const corsOptions = {
-  origin(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+const whitelist = {
+  origin: [
+    'https://my-mesto.nomoredomains.rocks',
+    'http://my-mesto.nomoredomains.rocks',
+    'http://localhost:3000',
+  ],
 };
 
 const app = express();
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
+app.use(cors(whitelist));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
