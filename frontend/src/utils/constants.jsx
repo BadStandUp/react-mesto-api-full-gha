@@ -1,6 +1,6 @@
 export const apiSettings = {
-  baseUrl: 'http://localhost:3000',
+  baseUrl: '//backend-mesto.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json'
   }
-}
+};

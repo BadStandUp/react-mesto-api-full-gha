@@ -16,9 +16,7 @@ if (!process.env.JWT_TOKEN) {
   process.env.JWT_TOKEN = 'some-secret-key';
 }
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-})
+mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected'))
   .catch((err) => {
     console.log(err);
@@ -30,6 +28,7 @@ const whitelist = {
     'http://my-mesto.nomoredomains.rocks',
     'http://localhost:3000',
   ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
 };
 
 const app = express();
