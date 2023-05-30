@@ -39,7 +39,7 @@ function App() {
     useEffect(() => {
         api.getInitialCards()
             .then((cards) => {
-                setCards(cards);
+                setCards(cards.data);
             })
             .catch((err) => {
                 console.log(err)
@@ -49,7 +49,7 @@ function App() {
     useEffect(() => {
         api.getUserInfo()
             .then((info) => {
-                setCurrentUser(info);
+                setCurrentUser(info.user);
             })
             .catch((err) => console.log(err));
     }, [])
@@ -95,7 +95,7 @@ function App() {
 
         api.changeLikeCardStatus(card._id, isLiked)
             .then((newCard) => {
-                const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+                const newCards = cards.map((c) => (c._id === card._id ? newCard.card : c));
                 setCards(newCards);
             })
             .catch((err) => console.log(err))
@@ -120,7 +120,7 @@ function App() {
         setIsLoading(true)
         api.editProfile(data)
             .then((info) => {
-                setCurrentUser(info);
+                setCurrentUser(info.data);
                 closeAllPopups();
             })
             .catch((err) => {
@@ -135,7 +135,7 @@ function App() {
         setIsLoading(true);
         api.editAvatar(data)
             .then((info) => {
-                setCurrentUser(info);
+                setCurrentUser(info.data);
                 closeAllPopups();
             })
             .catch((err) => {
@@ -150,7 +150,7 @@ function App() {
         setIsLoading(true);
         api.addCard(data)
             .then((newCard) => {
-                setCards([newCard, ...cards]);
+                setCards([newCard.data, ...cards]);
                 closeAllPopups();
             })
             .catch((err) => {
@@ -167,7 +167,7 @@ function App() {
             auth.getContent(token)
                 .then((res) => {
                     if (res) {
-                        setEmail(res.data.email);
+                        setEmail(res.user.email);
                         setIsLoggedIn(true);
                         navigate('/', {replace: true});
                     }
@@ -182,14 +182,14 @@ function App() {
         if (loggedIn) {
             api.getUserInfo()
                 .then((info) => {
-                    setCurrentUser(info);
+                    setCurrentUser(info.user);
                 })
                 .catch((err) => {
                     console.log(err)
                 })
             api.getInitialCards()
                 .then((cards) => {
-                    setCards(cards);
+                    setCards(cards.data);
                 })
                 .catch((err) => {
                     console.log(err)
