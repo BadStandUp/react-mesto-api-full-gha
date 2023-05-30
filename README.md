@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.133.88
+IP 84.201.133.88
 
 Frontend https://my-mesto.nomoredomains.rocks
 
